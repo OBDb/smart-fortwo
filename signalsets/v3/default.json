@@ -1,4 +1,572 @@
 { "commands": [
-
+{ "hdr": "61A", "rax": "483", "fcm1": true, "dbg": true, "cmd": {"22": "0223"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_OBL_PLATE_T",  "path": "Battery", "fmt": {"bix": 8,  "len": 8, "max": 214, "min": -40, "add": -40, "nullmax": 254, "unit": "celsius" }, "name": "Charger cooling plate temperature"},
+    {"id": "FORTWO_ED_OBL_T",        "path": "Battery", "fmt": {"bix": 24, "len": 8, "max": 214, "min": -40, "add": -40, "nullmax": 254, "unit": "celsius" }, "name": "Charger temperature"},
+    {"id": "FORTWO_ED_OBL_SOCKET_T", "path": "Battery", "fmt": {"bix": 40, "len": 8, "max": 214, "min": -40, "add": -40, "nullmax": 254, "unit": "celsius" }, "name": "Charging socket temperature"}
+  ]},
+{ "hdr": "61A", "rax": "483", "fcm1": true, "dbg": true, "cmd": {"22": "0225"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_ED_OBL_MAINS_A", "path": "Battery", "fmt": {"bix": 16,  "len": 16, "max": 204.6,  "div": 10, "nullmax": 2046, "unit": "amps" }, "name": "Charger mains current"},
+    {"id": "FORTWO_ED_OBL_CABLE_A", "path": "Battery", "fmt": {"bix": 32,  "len": 16, "max": 6553.5, "div": 10,                  "unit": "amps" }, "name": "Charging cable current code"},
+    {"id": "FORTWO_ED_OBL_HV_A",    "path": "Battery", "fmt": {"bix": 112, "len": 16, "max": 204.6,  "div": 10, "nullmax": 2046, "unit": "amps" }, "name": "Charger HV output current"}
+  ]},
+{ "hdr": "61A", "rax": "483", "fcm1": true, "dbg": true, "cmd": {"22": "0226"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_ED_OBL_LV",      "path": "Battery", "fmt": {"bix": 16, "len": 8,  "max": 25.5,  "div": 10,                  "unit": "volts" }, "name": "Charger 12V output voltage"},
+    {"id": "FORTWO_ED_OBL_HV",      "path": "Battery", "fmt": {"bix": 40, "len": 16, "max": 818.9, "div": 10, "nullmax": 8189, "unit": "volts" }, "name": "Charger HV output voltage"},
+    {"id": "FORTWO_ED_OBL_MAINS_V", "path": "Battery", "fmt": {"bix": 56, "len": 16, "max": 818.9, "div": 10, "nullmax": 8189, "unit": "volts" }, "name": "Charger mains voltage"}
+  ]},
+{ "hdr": "61A", "rax": "483", "fcm1": true, "dbg": true, "cmd": {"22": "022A"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_OBL_A_SET", "path": "Battery", "fmt": {"bix": 24, "len": 8, "max": 255, "unit": "amps" }, "name": "Charger current set point"}
+  ]},
+{ "hdr": "624", "rax": "5A4", "fcm1": true, "dbg": true, "cmd": {"22": "0201"}, "freq": 1,
+  "signals": [
+    {"id": "FORTWO_EQA_AUX_V_HD", "path": "Battery", "fmt": {"bix": 16, "len": 16, "max": 100, "mul": 1000, "div": 10000, "unit": "volts" }, "name": "12V system voltage, hd", "suggestedMetric": "starterBatteryVoltage"}
+  ]},
+{ "hdr": "743", "rax": "763", "dbg": true, "cmd": {"22": "0188"}, "freq": 600,
+  "signals": [
+    {"id": "FORTWO_SVC_LEVEL", "path": "Details", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Service level"}
+  ]},
+{ "hdr": "743", "rax": "763", "dbg": true, "cmd": {"22": "01A0"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_TRIP_START_DIST", "path": "Trips", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Distance at trip start"}
+  ]},
+{ "hdr": "743", "rax": "763", "dbg": true, "cmd": {"22": "01A2"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_TRIP_START_TIME", "path": "Trips", "fmt": { "len": 24, "max": 16777215, "unit": "seconds" }, "name": "Time at trip start"}
+  ]},
+{ "hdr": "743", "rax": "763", "dbg": true, "cmd": {"22": "0203"}, "freq": 600,
+  "signals": [
+    {"id": "FORTWO_SVC_DIST", "path": "Details", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Distance to next service"}
+  ]},
+{ "hdr": "743", "rax": "763", "dbg": true, "cmd": {"22": "0204"}, "freq": 600,
+  "signals": [
+    {"id": "FORTWO_SVC_DAYS", "path": "Details", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Days to next service"}
+  ]},
+{ "hdr": "743", "rax": "763", "dbg": true, "cmd": {"22": "200C"}, "freq": 20,
+  "signals": [
+    {"id": "FORTWO_AAT", "path": "Climate", "fmt": {"bix": 16, "len": 16, "max": 6513.5, "min": -40, "div": 10, "add": -40, "unit": "celsius" }, "name": "Outside temperature"}
+  ]},
+{ "hdr": "743", "rax": "763", "dbg": true, "cmd": {"22": "2104"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_TRIP_TIME", "path": "Trips", "fmt": { "len": 24, "max": 16777215, "unit": "seconds" }, "name": "Trip time"}
+  ]},
+{ "hdr": "745", "rax": "765", "fcm1": true, "dbg": true, "cmd": {"21": "25"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_DRIVER_LOCKED", "path": "Doors", "fmt": { "len": 8, "max": 1, "unit": "yesno" }, "name": "Driver door locked"}
+  ]},
+{ "hdr": "745", "rax": "765", "fcm1": true, "dbg": true, "cmd": {"21": "74"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_TP_1",          "path": "Tires", "fmt": {"bix": 64,  "len": 16, "max": 49151.25,             "mul": 0.75,             "unit": "kilopascal" }, "name": "Tire sensor 1 pressure"},
+    {"id": "FORTWO_TP_2",          "path": "Tires", "fmt": {"bix": 80,  "len": 16, "max": 49151.25,             "mul": 0.75,             "unit": "kilopascal" }, "name": "Tire sensor 2 pressure"},
+    {"id": "FORTWO_TP_3",          "path": "Tires", "fmt": {"bix": 96,  "len": 16, "max": 49151.25,             "mul": 0.75,             "unit": "kilopascal" }, "name": "Tire sensor 3 pressure"},
+    {"id": "FORTWO_TP_4",          "path": "Tires", "fmt": {"bix": 112, "len": 16, "max": 49151.25,             "mul": 0.75,             "unit": "kilopascal" }, "name": "Tire sensor 4 pressure"},
+    {"id": "FORTWO_TT_1",          "path": "Tires", "fmt": {"bix": 128, "len": 8,  "max": 225,      "min": -30,              "add": -30, "unit": "celsius"    }, "name": "Tire sensor 1 temperature"},
+    {"id": "FORTWO_TT_2",          "path": "Tires", "fmt": {"bix": 136, "len": 8,  "max": 225,      "min": -30,              "add": -30, "unit": "celsius"    }, "name": "Tire sensor 2 temperature"},
+    {"id": "FORTWO_TT_3",          "path": "Tires", "fmt": {"bix": 144, "len": 8,  "max": 225,      "min": -30,              "add": -30, "unit": "celsius"    }, "name": "Tire sensor 3 temperature"},
+    {"id": "FORTWO_TT_4",          "path": "Tires", "fmt": {"bix": 152, "len": 8,  "max": 225,      "min": -30,              "add": -30, "unit": "celsius"    }, "name": "Tire sensor 4 temperature"},
+    {"id": "FORTWO_TPMS_LOWBAT_4", "path": "Tires", "fmt": {"bix": 172, "len": 1,  "max": 1,                                             "unit": "yesno"      }, "name": "Tire sensor 4 battery low"},
+    {"id": "FORTWO_TPMS_LOWBAT_3", "path": "Tires", "fmt": {"bix": 173, "len": 1,  "max": 1,                                             "unit": "yesno"      }, "name": "Tire sensor 3 battery low"},
+    {"id": "FORTWO_TPMS_LOWBAT_2", "path": "Tires", "fmt": {"bix": 174, "len": 1,  "max": 1,                                             "unit": "yesno"      }, "name": "Tire sensor 2 battery low"},
+    {"id": "FORTWO_TPMS_LOWBAT_1", "path": "Tires", "fmt": {"bix": 175, "len": 1,  "max": 1,                                             "unit": "yesno"      }, "name": "Tire sensor 1 battery low"}
+  ]},
+{ "hdr": "745", "rax": "765", "fcm1": true, "dbg": true, "cmd": {"21": "79"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_TPMS_MISSING_4", "path": "Tires", "fmt": {"bix": 204, "len": 1, "max": 1, "unit": "yesno" }, "name": "Tire sensor 4 missing"},
+    {"id": "FORTWO_TPMS_MISSING_3", "path": "Tires", "fmt": {"bix": 205, "len": 1, "max": 1, "unit": "yesno" }, "name": "Tire sensor 3 missing"},
+    {"id": "FORTWO_TPMS_MISSING_2", "path": "Tires", "fmt": {"bix": 206, "len": 1, "max": 1, "unit": "yesno" }, "name": "Tire sensor 2 missing"},
+    {"id": "FORTWO_TPMS_MISSING_1", "path": "Tires", "fmt": {"bix": 207, "len": 1, "max": 1, "unit": "yesno" }, "name": "Tire sensor 1 missing"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "503A"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_MAINS_A_2", "path": "Battery", "fmt": { "len": 16, "max": 3895.9375, "min": -200, "div": 16, "add": -200, "unit": "amps" }, "name": "Mains current, phase 2"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "503B"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_MAINS_A_3", "path": "Battery", "fmt": { "len": 16, "max": 3895.9375, "min": -200, "div": 16, "add": -200, "unit": "amps" }, "name": "Mains current, phase 3"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "503F"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_MAINS_V_12", "path": "Battery", "fmt": { "len": 16, "max": 32767.5, "div": 2, "unit": "volts" }, "name": "Mains voltage, phases 1-2"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "5041"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_MAINS_V_23", "path": "Battery", "fmt": { "len": 16, "max": 32767.5, "div": 2, "unit": "volts" }, "name": "Mains voltage, phases 2-3"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "5042"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_MAINS_V_31", "path": "Battery", "fmt": { "len": 16, "max": 32767.5, "div": 2, "unit": "volts" }, "name": "Mains voltage, phases 3-1"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "5049"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_MAINS_HZ", "path": "Battery", "fmt": { "len": 16, "max": 521.9921, "min": 10, "div": 128, "add": 10, "unit": "hertz" }, "name": "Mains frequency"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "504A"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_MAINS_P", "path": "Battery", "fmt": { "len": 16, "max": 45.5349, "min": -20, "div": 1000, "add": -20, "unit": "kilowatts" }, "name": "Mains active power"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "5062"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_MAINS_GND_R", "path": "Battery", "fmt": { "len": 16, "max": 32.7669, "min": -32.768, "div": 1000, "add": -32.768, "unit": "scalar" }, "name": "Mains ground resistance"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "5064"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_LEAK_DIAG", "path": "Battery", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Leakage diagnostic code"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "5065"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_LEAK_DC", "path": "Battery", "fmt": { "len": 16, "max": 32.7669, "min": -32.768, "div": 1000, "add": -32.768, "unit": "scalar" }, "name": "Leakage DC current"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "5066"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_LEAK_HF10", "path": "Battery", "fmt": { "len": 16, "max": 32.7669, "min": -32.768, "div": 1000, "add": -32.768, "unit": "scalar" }, "name": "Leakage current, 10 kilohertz"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "5067"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_LEAK_HF", "path": "Battery", "fmt": { "len": 16, "max": 32.7669, "min": -32.768, "div": 1000, "add": -32.768, "unit": "scalar" }, "name": "Leakage high-frequency current"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "5068"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_LEAK_LF", "path": "Battery", "fmt": { "len": 16, "max": 32.7669, "min": -32.768, "div": 1000, "add": -32.768, "unit": "scalar" }, "name": "Leakage low-frequency current"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "5070"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_MAINS_A_LIMIT", "path": "Battery", "fmt": { "len": 16, "max": 32.7669, "min": -32.768, "div": 1000, "add": -32.768, "unit": "scalar" }, "name": "Mains current limit"}
+  ]},
+{ "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "7303"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_OBL_V",  "path": "Battery", "fmt": {            "len": 16, "max": 5990.3,  "div": 10,   "nullmax": 59903, "unit": "volts"     }, "name": "Charger mains voltage"},
+    {"id": "FORTWO_OBL_A1", "path": "Battery", "fmt": {"bix": 48,  "len": 16, "max": 5990.3,  "div": 10,   "nullmax": 59903, "unit": "amps"      }, "name": "Charger mains current, phase 1"},
+    {"id": "FORTWO_OBL_A2", "path": "Battery", "fmt": {"bix": 64,  "len": 16, "max": 5990.3,  "div": 10,   "nullmax": 59903, "unit": "amps"      }, "name": "Charger mains current, phase 2"},
+    {"id": "FORTWO_OBL_P1", "path": "Battery", "fmt": {"bix": 96,  "len": 16, "max": 29.9515, "div": 2000, "nullmax": 59903, "unit": "kilowatts" }, "name": "Charger power 1"},
+    {"id": "FORTWO_OBL_P2", "path": "Battery", "fmt": {"bix": 112, "len": 16, "max": 29.9515, "div": 2000, "nullmax": 59903, "unit": "kilowatts" }, "name": "Charger power 2"}
+  ]},
+{ "hdr": "79B", "rax": "7BB", "fcm1": true, "dbg": true, "cmd": {"21": "02"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_HV_CONT_LEFT", "path": "Battery", "fmt": {           "len": 32, "max": 4294967295, "unit": "scalar" }, "name": "HV contactor cycles remaining"},
+    {"id": "FORTWO_HV_CONT_MAX",  "path": "Battery", "fmt": {"bix": 32, "len": 32, "max": 4294967295, "unit": "scalar" }, "name": "HV contactor cycles, maximum"}
+  ]},
+{ "hdr": "79B", "rax": "7BB", "fcm1": true, "dbg": true, "cmd": {"21": "04"}, "freq": 30,
+  "signals": [
+    {"id": "FORTWO_HV_T_MIN", "path": "Battery", "fmt": {           "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "HV battery temperature, minimum"},
+    {"id": "FORTWO_HV_T_MAX", "path": "Battery", "fmt": {"bix": 16, "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "HV battery temperature, maximum"},
+    {"id": "FORTWO_HV_T_AVG", "path": "Battery", "fmt": {"bix": 32, "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "HV battery temperature, average"}
+  ]},
+{ "hdr": "79B", "rax": "7BB", "fcm1": true, "dbg": true, "cmd": {"21": "07"}, "freq": 5,
+  "signals": [
+    {"id": "FORTWO_CELL_V_MIN",        "path": "Battery",    "fmt": {            "len": 16, "max": 63.999,                                  "div": 1024,               "unit": "volts"  }, "name": "Lowest cell voltage"},
+    {"id": "FORTWO_CELL_V_MAX",        "path": "Battery",    "fmt": {"bix": 16,  "len": 16, "max": 63.999,                                  "div": 1024,               "unit": "volts"  }, "name": "Highest cell voltage"},
+    {"id": "FORTWO_HV_LINK_V",         "path": "Battery",    "fmt": {"bix": 32,  "len": 16, "max": 1023.9843,                               "div": 64,                 "unit": "volts"  }, "name": "HV link voltage"},
+    {"id": "FORTWO_HV_CELL_SUM_V",     "path": "Battery",    "fmt": {"bix": 48,  "len": 16, "max": 1023.9843,                               "div": 64,                 "unit": "volts"  }, "name": "Sum of cell voltages"},
+    {"id": "FORTWO_HV_V",              "path": "Battery",    "fmt": {"bix": 64,  "len": 16, "max": 1023.9843,                               "div": 64,                 "unit": "volts"  }, "name": "HV battery voltage",                     "suggestedMetric": "tractionBatteryVoltage"},
+    {"id": "FORTWO_HV_A",              "path": "Battery",    "fmt": {"bix": 80,  "len": 16, "max": 1024,      "min": -1023.9687, "mul": -1, "div": 32,   "sign": true, "unit": "amps"   }, "name": "HV battery current",                     "suggestedMetric": "tractionBatteryCurrent"},
+    {"id": "FORTWO_HV_CONTACTOR",      "path": "Battery",    "fmt": {"bix": 96,  "len": 8,  "max": 3,                                                                  "unit": "scalar" }, "name": "HV contactor state"},
+    {"id": "FORTWO_HV_INTERLOCK_PLUG", "path": "Battery",    "fmt": {"bix": 104, "len": 8,  "max": 1,                                                                  "unit": "yesno"  }, "name": "HV plug interlock closed"},
+    {"id": "FORTWO_HV_INTERLOCK_SVC",  "path": "Battery",    "fmt": {"bix": 112, "len": 8,  "max": 1,                                                                  "unit": "yesno"  }, "name": "Service interlock closed"},
+    {"id": "FORTWO_MOTOR_RPM",         "path": "Drivetrain", "fmt": {"bix": 136, "len": 16, "max": 32767.5,                                 "div": 2,                  "unit": "rpm"    }, "name": "Motor speed"},
+    {"id": "FORTWO_EV_MODE",           "path": "Battery",    "fmt": {"bix": 168, "len": 8,  "max": 7,                                                                  "unit": "scalar" }, "name": "Battery operating mode"},
+    {"id": "FORTWO_12V_V_BMS",         "path": "Electrical", "fmt": {"bix": 176, "len": 8,  "max": 31.875,                                  "div": 8,                  "unit": "volts"  }, "name": "12V supply voltage, battery controller"}
+  ]},
+{ "hdr": "79B", "rax": "7BB", "fcm1": true, "dbg": true, "cmd": {"21": "08"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_OCV",          "path": "Battery", "fmt": {            "len": 16, "max": 655.35,    "div": 100, "unit": "volts"       }, "name": "HV battery open-circuit voltage"},
+    {"id": "FORTWO_SOC_REAL_MIN", "path": "Battery", "fmt": {"bix": 16,  "len": 16, "max": 4095.9375, "div": 16,  "unit": "percent"     }, "name": "Real state of charge, minimum"},
+    {"id": "FORTWO_SOC_REAL_MAX", "path": "Battery", "fmt": {"bix": 32,  "len": 16, "max": 4095.9375, "div": 16,  "unit": "percent"     }, "name": "Real state of charge, maximum"},
+    {"id": "FORTWO_SOC",          "path": "Battery", "fmt": {"bix": 48,  "len": 16, "max": 4095.9375, "div": 16,  "unit": "percent"     }, "name": "State of charge",                 "suggestedMetric": "stateOfCharge"},
+    {"id": "FORTWO_CAP_LOSS",     "path": "Battery", "fmt": {"bix": 64,  "len": 16, "max": 4095.9375, "div": 16,  "unit": "percent"     }, "name": "Capacity loss"},
+    {"id": "FORTWO_CAP_INIT",     "path": "Battery", "fmt": {"bix": 80,  "len": 16, "max": 182.0416,  "div": 360, "unit": "ampereHours" }, "name": "Initial capacity"},
+    {"id": "FORTWO_CAP_EST",      "path": "Battery", "fmt": {"bix": 96,  "len": 16, "max": 182.0416,  "div": 360, "unit": "ampereHours" }, "name": "Estimated capacity"},
+    {"id": "FORTWO_OCV_STATE",    "path": "Battery", "fmt": {"bix": 112, "len": 8,  "max": 4,                     "unit": "scalar"      }, "name": "Open-circuit voltage state"}
+  ]},
+{ "hdr": "79B", "rax": "7BB", "fcm1": true, "dbg": true, "cmd": {"21": "25"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_SOC_RECAL",   "path": "Battery", "fmt": {          "len": 8,  "max": 3,                    "unit": "scalar"  }, "name": "State of charge recalibration state"},
+    {"id": "FORTWO_SOC_DISPLAY", "path": "Battery", "fmt": {"bix": 8, "len": 16, "max": 4095.9375, "div": 16, "unit": "percent" }, "name": "State of charge, displayed"}
+  ]},
+{ "hdr": "79B", "rax": "7BB", "fcm1": true, "dbg": true, "cmd": {"21": "41"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_CELL_V1",  "path": "Battery.Cells", "fmt": {            "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 1 voltage"},
+    {"id": "FORTWO_CELL_V2",  "path": "Battery.Cells", "fmt": {"bix": 16,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 2 voltage"},
+    {"id": "FORTWO_CELL_V3",  "path": "Battery.Cells", "fmt": {"bix": 32,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 3 voltage"},
+    {"id": "FORTWO_CELL_V4",  "path": "Battery.Cells", "fmt": {"bix": 48,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 4 voltage"},
+    {"id": "FORTWO_CELL_V5",  "path": "Battery.Cells", "fmt": {"bix": 64,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 5 voltage"},
+    {"id": "FORTWO_CELL_V6",  "path": "Battery.Cells", "fmt": {"bix": 80,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 6 voltage"},
+    {"id": "FORTWO_CELL_V7",  "path": "Battery.Cells", "fmt": {"bix": 96,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 7 voltage"},
+    {"id": "FORTWO_CELL_V8",  "path": "Battery.Cells", "fmt": {"bix": 112, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 8 voltage"},
+    {"id": "FORTWO_CELL_V9",  "path": "Battery.Cells", "fmt": {"bix": 128, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 9 voltage"},
+    {"id": "FORTWO_CELL_V10", "path": "Battery.Cells", "fmt": {"bix": 144, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 10 voltage"},
+    {"id": "FORTWO_CELL_V11", "path": "Battery.Cells", "fmt": {"bix": 160, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 11 voltage"},
+    {"id": "FORTWO_CELL_V12", "path": "Battery.Cells", "fmt": {"bix": 176, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 12 voltage"},
+    {"id": "FORTWO_CELL_V13", "path": "Battery.Cells", "fmt": {"bix": 192, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 13 voltage"},
+    {"id": "FORTWO_CELL_V14", "path": "Battery.Cells", "fmt": {"bix": 208, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 14 voltage"},
+    {"id": "FORTWO_CELL_V15", "path": "Battery.Cells", "fmt": {"bix": 224, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 15 voltage"},
+    {"id": "FORTWO_CELL_V16", "path": "Battery.Cells", "fmt": {"bix": 240, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 16 voltage"},
+    {"id": "FORTWO_CELL_V17", "path": "Battery.Cells", "fmt": {"bix": 256, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 17 voltage"},
+    {"id": "FORTWO_CELL_V18", "path": "Battery.Cells", "fmt": {"bix": 272, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 18 voltage"},
+    {"id": "FORTWO_CELL_V19", "path": "Battery.Cells", "fmt": {"bix": 288, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 19 voltage"},
+    {"id": "FORTWO_CELL_V20", "path": "Battery.Cells", "fmt": {"bix": 304, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 20 voltage"},
+    {"id": "FORTWO_CELL_V21", "path": "Battery.Cells", "fmt": {"bix": 320, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 21 voltage"},
+    {"id": "FORTWO_CELL_V22", "path": "Battery.Cells", "fmt": {"bix": 336, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 22 voltage"},
+    {"id": "FORTWO_CELL_V23", "path": "Battery.Cells", "fmt": {"bix": 352, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 23 voltage"},
+    {"id": "FORTWO_CELL_V24", "path": "Battery.Cells", "fmt": {"bix": 368, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 24 voltage"},
+    {"id": "FORTWO_CELL_V25", "path": "Battery.Cells", "fmt": {"bix": 384, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 25 voltage"},
+    {"id": "FORTWO_CELL_V26", "path": "Battery.Cells", "fmt": {"bix": 400, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 26 voltage"},
+    {"id": "FORTWO_CELL_V27", "path": "Battery.Cells", "fmt": {"bix": 416, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 27 voltage"},
+    {"id": "FORTWO_CELL_V28", "path": "Battery.Cells", "fmt": {"bix": 432, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 28 voltage"},
+    {"id": "FORTWO_CELL_V29", "path": "Battery.Cells", "fmt": {"bix": 448, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 29 voltage"},
+    {"id": "FORTWO_CELL_V30", "path": "Battery.Cells", "fmt": {"bix": 464, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 30 voltage"},
+    {"id": "FORTWO_CELL_V31", "path": "Battery.Cells", "fmt": {"bix": 480, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 31 voltage"},
+    {"id": "FORTWO_CELL_V32", "path": "Battery.Cells", "fmt": {"bix": 496, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 32 voltage"},
+    {"id": "FORTWO_CELL_V33", "path": "Battery.Cells", "fmt": {"bix": 512, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 33 voltage"},
+    {"id": "FORTWO_CELL_V34", "path": "Battery.Cells", "fmt": {"bix": 528, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 34 voltage"},
+    {"id": "FORTWO_CELL_V35", "path": "Battery.Cells", "fmt": {"bix": 544, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 35 voltage"},
+    {"id": "FORTWO_CELL_V36", "path": "Battery.Cells", "fmt": {"bix": 560, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 36 voltage"},
+    {"id": "FORTWO_CELL_V37", "path": "Battery.Cells", "fmt": {"bix": 576, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 37 voltage"},
+    {"id": "FORTWO_CELL_V38", "path": "Battery.Cells", "fmt": {"bix": 592, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 38 voltage"},
+    {"id": "FORTWO_CELL_V39", "path": "Battery.Cells", "fmt": {"bix": 608, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 39 voltage"},
+    {"id": "FORTWO_CELL_V40", "path": "Battery.Cells", "fmt": {"bix": 624, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 40 voltage"},
+    {"id": "FORTWO_CELL_V41", "path": "Battery.Cells", "fmt": {"bix": 640, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 41 voltage"},
+    {"id": "FORTWO_CELL_V42", "path": "Battery.Cells", "fmt": {"bix": 656, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 42 voltage"},
+    {"id": "FORTWO_CELL_V43", "path": "Battery.Cells", "fmt": {"bix": 672, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 43 voltage"},
+    {"id": "FORTWO_CELL_V44", "path": "Battery.Cells", "fmt": {"bix": 688, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 44 voltage"},
+    {"id": "FORTWO_CELL_V45", "path": "Battery.Cells", "fmt": {"bix": 704, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 45 voltage"},
+    {"id": "FORTWO_CELL_V46", "path": "Battery.Cells", "fmt": {"bix": 720, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 46 voltage"},
+    {"id": "FORTWO_CELL_V47", "path": "Battery.Cells", "fmt": {"bix": 736, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 47 voltage"},
+    {"id": "FORTWO_CELL_V48", "path": "Battery.Cells", "fmt": {"bix": 752, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 48 voltage"}
+  ]},
+{ "hdr": "79B", "rax": "7BB", "fcm1": true, "dbg": true, "cmd": {"21": "42"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_CELL_V49", "path": "Battery.Cells", "fmt": {            "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 49 voltage"},
+    {"id": "FORTWO_CELL_V50", "path": "Battery.Cells", "fmt": {"bix": 16,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 50 voltage"},
+    {"id": "FORTWO_CELL_V51", "path": "Battery.Cells", "fmt": {"bix": 32,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 51 voltage"},
+    {"id": "FORTWO_CELL_V52", "path": "Battery.Cells", "fmt": {"bix": 48,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 52 voltage"},
+    {"id": "FORTWO_CELL_V53", "path": "Battery.Cells", "fmt": {"bix": 64,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 53 voltage"},
+    {"id": "FORTWO_CELL_V54", "path": "Battery.Cells", "fmt": {"bix": 80,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 54 voltage"},
+    {"id": "FORTWO_CELL_V55", "path": "Battery.Cells", "fmt": {"bix": 96,  "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 55 voltage"},
+    {"id": "FORTWO_CELL_V56", "path": "Battery.Cells", "fmt": {"bix": 112, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 56 voltage"},
+    {"id": "FORTWO_CELL_V57", "path": "Battery.Cells", "fmt": {"bix": 128, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 57 voltage"},
+    {"id": "FORTWO_CELL_V58", "path": "Battery.Cells", "fmt": {"bix": 144, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 58 voltage"},
+    {"id": "FORTWO_CELL_V59", "path": "Battery.Cells", "fmt": {"bix": 160, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 59 voltage"},
+    {"id": "FORTWO_CELL_V60", "path": "Battery.Cells", "fmt": {"bix": 176, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 60 voltage"},
+    {"id": "FORTWO_CELL_V61", "path": "Battery.Cells", "fmt": {"bix": 192, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 61 voltage"},
+    {"id": "FORTWO_CELL_V62", "path": "Battery.Cells", "fmt": {"bix": 208, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 62 voltage"},
+    {"id": "FORTWO_CELL_V63", "path": "Battery.Cells", "fmt": {"bix": 224, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 63 voltage"},
+    {"id": "FORTWO_CELL_V64", "path": "Battery.Cells", "fmt": {"bix": 240, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 64 voltage"},
+    {"id": "FORTWO_CELL_V65", "path": "Battery.Cells", "fmt": {"bix": 256, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 65 voltage"},
+    {"id": "FORTWO_CELL_V66", "path": "Battery.Cells", "fmt": {"bix": 272, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 66 voltage"},
+    {"id": "FORTWO_CELL_V67", "path": "Battery.Cells", "fmt": {"bix": 288, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 67 voltage"},
+    {"id": "FORTWO_CELL_V68", "path": "Battery.Cells", "fmt": {"bix": 304, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 68 voltage"},
+    {"id": "FORTWO_CELL_V69", "path": "Battery.Cells", "fmt": {"bix": 320, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 69 voltage"},
+    {"id": "FORTWO_CELL_V70", "path": "Battery.Cells", "fmt": {"bix": 336, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 70 voltage"},
+    {"id": "FORTWO_CELL_V71", "path": "Battery.Cells", "fmt": {"bix": 352, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 71 voltage"},
+    {"id": "FORTWO_CELL_V72", "path": "Battery.Cells", "fmt": {"bix": 368, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 72 voltage"},
+    {"id": "FORTWO_CELL_V73", "path": "Battery.Cells", "fmt": {"bix": 384, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 73 voltage"},
+    {"id": "FORTWO_CELL_V74", "path": "Battery.Cells", "fmt": {"bix": 400, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 74 voltage"},
+    {"id": "FORTWO_CELL_V75", "path": "Battery.Cells", "fmt": {"bix": 416, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 75 voltage"},
+    {"id": "FORTWO_CELL_V76", "path": "Battery.Cells", "fmt": {"bix": 432, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 76 voltage"},
+    {"id": "FORTWO_CELL_V77", "path": "Battery.Cells", "fmt": {"bix": 448, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 77 voltage"},
+    {"id": "FORTWO_CELL_V78", "path": "Battery.Cells", "fmt": {"bix": 464, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 78 voltage"},
+    {"id": "FORTWO_CELL_V79", "path": "Battery.Cells", "fmt": {"bix": 480, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 79 voltage"},
+    {"id": "FORTWO_CELL_V80", "path": "Battery.Cells", "fmt": {"bix": 496, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 80 voltage"},
+    {"id": "FORTWO_CELL_V81", "path": "Battery.Cells", "fmt": {"bix": 512, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 81 voltage"},
+    {"id": "FORTWO_CELL_V82", "path": "Battery.Cells", "fmt": {"bix": 528, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 82 voltage"},
+    {"id": "FORTWO_CELL_V83", "path": "Battery.Cells", "fmt": {"bix": 544, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 83 voltage"},
+    {"id": "FORTWO_CELL_V84", "path": "Battery.Cells", "fmt": {"bix": 560, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 84 voltage"},
+    {"id": "FORTWO_CELL_V85", "path": "Battery.Cells", "fmt": {"bix": 576, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 85 voltage"},
+    {"id": "FORTWO_CELL_V86", "path": "Battery.Cells", "fmt": {"bix": 592, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 86 voltage"},
+    {"id": "FORTWO_CELL_V87", "path": "Battery.Cells", "fmt": {"bix": 608, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 87 voltage"},
+    {"id": "FORTWO_CELL_V88", "path": "Battery.Cells", "fmt": {"bix": 624, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 88 voltage"},
+    {"id": "FORTWO_CELL_V89", "path": "Battery.Cells", "fmt": {"bix": 640, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 89 voltage"},
+    {"id": "FORTWO_CELL_V90", "path": "Battery.Cells", "fmt": {"bix": 656, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 90 voltage"},
+    {"id": "FORTWO_CELL_V91", "path": "Battery.Cells", "fmt": {"bix": 672, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 91 voltage"},
+    {"id": "FORTWO_CELL_V92", "path": "Battery.Cells", "fmt": {"bix": 688, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 92 voltage"},
+    {"id": "FORTWO_CELL_V93", "path": "Battery.Cells", "fmt": {"bix": 704, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 93 voltage"},
+    {"id": "FORTWO_CELL_V94", "path": "Battery.Cells", "fmt": {"bix": 720, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 94 voltage"},
+    {"id": "FORTWO_CELL_V95", "path": "Battery.Cells", "fmt": {"bix": 736, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 95 voltage"},
+    {"id": "FORTWO_CELL_V96", "path": "Battery.Cells", "fmt": {"bix": 752, "len": 16, "max": 63.999, "div": 1024, "unit": "volts" }, "name": "Cell 96 voltage"}
+  ]},
+{ "hdr": "79B", "rax": "7BB", "fcm1": true, "dbg": true, "cmd": {"21": "61"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_CAP_FULL", "path": "Battery", "fmt": {"bix": 48, "len": 16, "max": 91.0194,    "min": -91.0222, "div": 360, "sign": true, "unit": "ampereHours" }, "name": "Usable capacity, full"},
+    {"id": "FORTWO_SOH",      "path": "Battery", "fmt": {"bix": 64, "len": 8,  "max": 127.5,                       "div": 2,                 "unit": "percent"     }, "name": "State of health",              "suggestedMetric": "stateOfHealth"},
+    {"id": "FORTWO_BMS_ODO",  "path": "Trips",   "fmt": {"bix": 72, "len": 32, "max": 4294967295,                                            "unit": "kilometers"  }, "name": "Distance, battery controller"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "3022"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_DCDC_REQ", "path": "Electrical", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "DC/DC activation request"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "3023"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_DCDC_V_REQ", "path": "Electrical", "fmt": { "len": 8, "max": 24.75, "min": 12, "div": 20, "add": 12, "unit": "volts" }, "name": "DC/DC voltage request"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "3024"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_DCDC_V", "path": "Electrical", "fmt": { "len": 8, "max": 29.5, "min": 4, "div": 10, "add": 4, "unit": "volts" }, "name": "DC/DC output voltage"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "3025"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_DCDC_A", "path": "Electrical", "fmt": { "len": 8, "max": 25.5, "div": 10, "unit": "amps" }, "name": "DC/DC output current"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "320C"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_HV_E", "path": "Battery", "fmt": { "len": 16, "max": 327.675, "div": 200, "unit": "kilowattHours" }, "name": "HV battery available energy"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "3301"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_USM_V", "path": "Electrical", "fmt": { "len": 8, "max": 21.2999, "min": 6, "mul": 0.06, "add": 6, "unit": "volts" }, "name": "Power distribution 12V voltage"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "339D"}, "freq": 5,
+  "signals": [
+    {"id": "FORTWO_PLUG", "path": "Battery", "fmt": {"bix": 4, "len": 4, "max": 1, "unit": "yesno" }, "name": "Charging plug detected", "suggestedMetric": "pluggedIn"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "3494"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_DCDC_P", "path": "Electrical", "fmt": { "len": 16, "max": 655350, "mul": 10, "unit": "watts" }, "name": "DC/DC output power"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "3495"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_DCDC_LOAD", "path": "Electrical", "fmt": { "len": 8, "max": 98.8281, "div": 2.56, "nullmax": 253, "unit": "percent" }, "name": "DC/DC load"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "34CB"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_BLOWER", "path": "Climate", "fmt": { "len": 8, "max": 100, "mul": 2, "unit": "percent" }, "name": "Cabin blower command"}
+  ]},
+{ "hdr": "7E5", "dbg": true, "cmd": {"22": "2005"}, "freq": 1,
+  "signals": [
+    {"id": "FORTWO_EQA_AUX_V", "path": "Battery", "fmt": { "len": 8, "max": 25.9, "mul": 25.9, "div": 255, "unit": "volts" }, "name": "Auxiliary battery voltage", "suggestedMetric": "starterBatteryVoltage"}
+  ]},
+{ "hdr": "7E5", "dbg": true, "cmd": {"22": "2526"}, "freq": 5,
+  "signals": [
+    {"id": "FORTWO_EQA_HV_COOLANT_T", "path": "Battery", "fmt": { "len": 16, "max": 100, "mul": 1250, "div": 10000, "sign": true, "unit": "celsius" }, "name": "HV battery coolant temperature"}
+  ]},
+{ "hdr": "7E5", "dbg": true, "cmd": {"22": "6050"}, "freq": 1,
+  "signals": [
+    {"id": "FORTWO_EQA_HV_SOC", "path": "Battery", "fmt": { "len": 16, "max": 100, "div": 100, "unit": "percent" }, "name": "HV battery state of charge", "suggestedMetric": "stateOfCharge"}
+  ]},
+{ "hdr": "7E5", "dbg": true, "cmd": {"22": "6053"}, "freq": 1,
+  "signals": [
+    {"id": "FORTWO_EQA_HV_A", "path": "Battery", "fmt": { "len": 16, "max": 100, "div": 10, "sign": true, "unit": "amps" }, "name": "HV battery amperage"}
+  ]},
+{ "hdr": "7E5", "dbg": true, "cmd": {"22": "6071"}, "freq": 1,
+  "signals": [
+    {"id": "FORTWO_EQA_CNVRTR_REQ_V", "path": "Battery", "fmt": { "len": 16, "max": 100, "mul": 250, "div": 10000, "unit": "volts" }, "name": "DC converter requested voltage"}
+  ]},
+{ "hdr": "7E5", "dbg": true, "cmd": {"22": "6075"}, "freq": 1,
+  "signals": [
+    {"id": "FORTWO_EQA_HV_V", "path": "Battery", "fmt": { "len": 16, "max": 100, "mul": 25, "div": 1000, "unit": "volts" }, "name": "HV battery voltage"}
+  ]},
+{ "hdr": "7E5", "dbg": true, "cmd": {"22": "6502"}, "freq": 1,
+  "signals": [
+    {"id": "FORTWO_EQA_HV_RANGE", "path": "Trips", "fmt": { "len": 32, "max": 1000, "unit": "kilometers" }, "name": "HV battery remaining distance", "suggestedMetric": "electricRange"}
+  ]},
+{ "hdr": "7E5", "dbg": true, "cmd": {"22": "6504"}, "freq": 1,
+  "signals": [
+    {"id": "FORTWO_EQA_SERVICE_DIST", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Distance to next service"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "2041"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_VAC_P1", "path": "Brakes", "fmt": { "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "scalar" }, "name": "Vacuum pump pressure 1"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "2043"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_VAC_P2", "path": "Brakes", "fmt": { "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "scalar" }, "name": "Vacuum pump pressure 2"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "2047"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_COOLANT_T", "path": "Engine", "fmt": { "len": 16, "max": 8191.875, "div": 8, "unit": "celsius" }, "name": "Coolant temperature"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "2308"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_PUMP_V", "path": "Engine", "fmt": { "len": 8, "max": 25.5, "div": 10, "unit": "volts" }, "name": "Coolant pump voltage"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "2309"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_PUMP_A", "path": "Engine", "fmt": {"bix": 8, "len": 8, "max": 51, "div": 5, "unit": "amps" }, "name": "Coolant pump current"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "230A"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_PUMP_T", "path": "Engine", "fmt": { "len": 8, "max": 205, "min": -50, "add": -50, "unit": "celsius" }, "name": "Coolant pump temperature"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "6308"}, "freq": 600,
+  "signals": [
+    {"id": "FORTWO_ED_BAT_AGE", "path": "Battery", "fmt": { "len": 8, "max": 127.5, "div": 2, "unit": "percent" }, "name": "Battery age condition"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "6309"}, "freq": 600,
+  "signals": [
+    {"id": "FORTWO_ED_PUMP_HOURS", "path": "Stats", "fmt": { "len": 16, "max": 65535, "unit": "hours" }, "name": "Coolant pump operating time"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "630A"}, "freq": 600,
+  "signals": [
+    {"id": "FORTWO_ED_FAN_HOURS", "path": "Stats", "fmt": { "len": 16, "max": 65535, "unit": "hours" }, "name": "Cooling fan operating time"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "6321"}, "freq": 600,
+  "signals": [
+    {"id": "FORTWO_ED_HEATER_HOURS", "path": "Stats", "fmt": { "len": 16, "max": 65535, "unit": "hours" }, "name": "Battery heater operating time"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "D032"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_PUMP_DUTY", "path": "Engine", "fmt": { "len": 8, "max": 100, "div": 2.55, "unit": "percent" }, "name": "Coolant pump speed"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "D041"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_FAN_DUTY", "path": "Engine", "fmt": { "len": 8, "max": 100, "div": 2.55, "unit": "percent" }, "name": "Cooling fan speed"}
+  ]},
+{ "hdr": "7E5", "rax": "7ED", "dbg": true, "cmd": {"22": "D302"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_HEATER_ON", "path": "Battery", "fmt": { "len": 8, "max": 1, "unit": "offon" }, "name": "Battery heater on"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "0201"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_HV_T", "path": "Battery", "fmt": { "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "HV battery temperature"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "0202"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_MOD_T1", "path": "Battery", "fmt": {            "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Battery module 1 temperature"},
+    {"id": "FORTWO_ED_MOD_T2", "path": "Battery", "fmt": {"bix": 16,  "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Battery module 2 temperature"},
+    {"id": "FORTWO_ED_MOD_T3", "path": "Battery", "fmt": {"bix": 32,  "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Battery module 3 temperature"},
+    {"id": "FORTWO_ED_MOD_T4", "path": "Battery", "fmt": {"bix": 48,  "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Battery module 4 temperature"},
+    {"id": "FORTWO_ED_MOD_T5", "path": "Battery", "fmt": {"bix": 64,  "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Battery module 5 temperature"},
+    {"id": "FORTWO_ED_MOD_T6", "path": "Battery", "fmt": {"bix": 80,  "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Battery module 6 temperature"},
+    {"id": "FORTWO_ED_MOD_T7", "path": "Battery", "fmt": {"bix": 96,  "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Battery module 7 temperature"},
+    {"id": "FORTWO_ED_MOD_T8", "path": "Battery", "fmt": {"bix": 112, "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Battery module 8 temperature"},
+    {"id": "FORTWO_ED_MOD_T9", "path": "Battery", "fmt": {"bix": 128, "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Battery module 9 temperature"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "0203"}, "freq": 5,
+  "signals": [
+    {"id": "FORTWO_ED_HV_A", "path": "Battery", "fmt": { "len": 16, "max": 1023.9687, "min": -1024, "div": 32, "sign": true, "unit": "amps" }, "name": "HV battery current"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "0204"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_ED_HV_V", "path": "Battery", "fmt": {"bix": 64, "len": 16, "max": 1023.9843, "div": 64, "unit": "volts" }, "name": "HV battery voltage"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "0207"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_ADC_V_MAX", "path": "Battery", "fmt": {           "len": 16, "max": 67035, "min": 1500, "add": 1500, "unit": "millivolts" }, "name": "Cell voltage reference, maximum"},
+    {"id": "FORTWO_ED_ADC_V_MIN", "path": "Battery", "fmt": {"bix": 16, "len": 16, "max": 67035, "min": 1500, "add": 1500, "unit": "millivolts" }, "name": "Cell voltage reference, minimum"},
+    {"id": "FORTWO_ED_ADC_V_AVG", "path": "Battery", "fmt": {"bix": 32, "len": 16, "max": 65535,                           "unit": "millivolts" }, "name": "Cell voltage reference, average"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "0208"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_CELL_V1",  "path": "Battery.Cells", "fmt": {             "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 1 voltage"},
+    {"id": "FORTWO_ED_CELL_V2",  "path": "Battery.Cells", "fmt": {"bix": 16,   "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 2 voltage"},
+    {"id": "FORTWO_ED_CELL_V3",  "path": "Battery.Cells", "fmt": {"bix": 32,   "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 3 voltage"},
+    {"id": "FORTWO_ED_CELL_V4",  "path": "Battery.Cells", "fmt": {"bix": 48,   "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 4 voltage"},
+    {"id": "FORTWO_ED_CELL_V5",  "path": "Battery.Cells", "fmt": {"bix": 64,   "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 5 voltage"},
+    {"id": "FORTWO_ED_CELL_V6",  "path": "Battery.Cells", "fmt": {"bix": 80,   "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 6 voltage"},
+    {"id": "FORTWO_ED_CELL_V7",  "path": "Battery.Cells", "fmt": {"bix": 96,   "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 7 voltage"},
+    {"id": "FORTWO_ED_CELL_V8",  "path": "Battery.Cells", "fmt": {"bix": 112,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 8 voltage"},
+    {"id": "FORTWO_ED_CELL_V9",  "path": "Battery.Cells", "fmt": {"bix": 128,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 9 voltage"},
+    {"id": "FORTWO_ED_CELL_V10", "path": "Battery.Cells", "fmt": {"bix": 144,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 10 voltage"},
+    {"id": "FORTWO_ED_CELL_V11", "path": "Battery.Cells", "fmt": {"bix": 160,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 11 voltage"},
+    {"id": "FORTWO_ED_CELL_V12", "path": "Battery.Cells", "fmt": {"bix": 176,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 12 voltage"},
+    {"id": "FORTWO_ED_CELL_V13", "path": "Battery.Cells", "fmt": {"bix": 192,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 13 voltage"},
+    {"id": "FORTWO_ED_CELL_V14", "path": "Battery.Cells", "fmt": {"bix": 208,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 14 voltage"},
+    {"id": "FORTWO_ED_CELL_V15", "path": "Battery.Cells", "fmt": {"bix": 224,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 15 voltage"},
+    {"id": "FORTWO_ED_CELL_V16", "path": "Battery.Cells", "fmt": {"bix": 240,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 16 voltage"},
+    {"id": "FORTWO_ED_CELL_V17", "path": "Battery.Cells", "fmt": {"bix": 256,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 17 voltage"},
+    {"id": "FORTWO_ED_CELL_V18", "path": "Battery.Cells", "fmt": {"bix": 272,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 18 voltage"},
+    {"id": "FORTWO_ED_CELL_V19", "path": "Battery.Cells", "fmt": {"bix": 288,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 19 voltage"},
+    {"id": "FORTWO_ED_CELL_V20", "path": "Battery.Cells", "fmt": {"bix": 304,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 20 voltage"},
+    {"id": "FORTWO_ED_CELL_V21", "path": "Battery.Cells", "fmt": {"bix": 320,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 21 voltage"},
+    {"id": "FORTWO_ED_CELL_V22", "path": "Battery.Cells", "fmt": {"bix": 336,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 22 voltage"},
+    {"id": "FORTWO_ED_CELL_V23", "path": "Battery.Cells", "fmt": {"bix": 352,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 23 voltage"},
+    {"id": "FORTWO_ED_CELL_V24", "path": "Battery.Cells", "fmt": {"bix": 368,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 24 voltage"},
+    {"id": "FORTWO_ED_CELL_V25", "path": "Battery.Cells", "fmt": {"bix": 384,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 25 voltage"},
+    {"id": "FORTWO_ED_CELL_V26", "path": "Battery.Cells", "fmt": {"bix": 400,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 26 voltage"},
+    {"id": "FORTWO_ED_CELL_V27", "path": "Battery.Cells", "fmt": {"bix": 416,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 27 voltage"},
+    {"id": "FORTWO_ED_CELL_V28", "path": "Battery.Cells", "fmt": {"bix": 432,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 28 voltage"},
+    {"id": "FORTWO_ED_CELL_V29", "path": "Battery.Cells", "fmt": {"bix": 448,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 29 voltage"},
+    {"id": "FORTWO_ED_CELL_V30", "path": "Battery.Cells", "fmt": {"bix": 464,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 30 voltage"},
+    {"id": "FORTWO_ED_CELL_V31", "path": "Battery.Cells", "fmt": {"bix": 480,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 31 voltage"},
+    {"id": "FORTWO_ED_CELL_V32", "path": "Battery.Cells", "fmt": {"bix": 496,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 32 voltage"},
+    {"id": "FORTWO_ED_CELL_V33", "path": "Battery.Cells", "fmt": {"bix": 512,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 33 voltage"},
+    {"id": "FORTWO_ED_CELL_V34", "path": "Battery.Cells", "fmt": {"bix": 528,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 34 voltage"},
+    {"id": "FORTWO_ED_CELL_V35", "path": "Battery.Cells", "fmt": {"bix": 544,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 35 voltage"},
+    {"id": "FORTWO_ED_CELL_V36", "path": "Battery.Cells", "fmt": {"bix": 560,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 36 voltage"},
+    {"id": "FORTWO_ED_CELL_V37", "path": "Battery.Cells", "fmt": {"bix": 576,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 37 voltage"},
+    {"id": "FORTWO_ED_CELL_V38", "path": "Battery.Cells", "fmt": {"bix": 592,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 38 voltage"},
+    {"id": "FORTWO_ED_CELL_V39", "path": "Battery.Cells", "fmt": {"bix": 608,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 39 voltage"},
+    {"id": "FORTWO_ED_CELL_V40", "path": "Battery.Cells", "fmt": {"bix": 624,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 40 voltage"},
+    {"id": "FORTWO_ED_CELL_V41", "path": "Battery.Cells", "fmt": {"bix": 640,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 41 voltage"},
+    {"id": "FORTWO_ED_CELL_V42", "path": "Battery.Cells", "fmt": {"bix": 656,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 42 voltage"},
+    {"id": "FORTWO_ED_CELL_V43", "path": "Battery.Cells", "fmt": {"bix": 672,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 43 voltage"},
+    {"id": "FORTWO_ED_CELL_V44", "path": "Battery.Cells", "fmt": {"bix": 688,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 44 voltage"},
+    {"id": "FORTWO_ED_CELL_V45", "path": "Battery.Cells", "fmt": {"bix": 704,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 45 voltage"},
+    {"id": "FORTWO_ED_CELL_V46", "path": "Battery.Cells", "fmt": {"bix": 720,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 46 voltage"},
+    {"id": "FORTWO_ED_CELL_V47", "path": "Battery.Cells", "fmt": {"bix": 736,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 47 voltage"},
+    {"id": "FORTWO_ED_CELL_V48", "path": "Battery.Cells", "fmt": {"bix": 752,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 48 voltage"},
+    {"id": "FORTWO_ED_CELL_V49", "path": "Battery.Cells", "fmt": {"bix": 768,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 49 voltage"},
+    {"id": "FORTWO_ED_CELL_V50", "path": "Battery.Cells", "fmt": {"bix": 784,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 50 voltage"},
+    {"id": "FORTWO_ED_CELL_V51", "path": "Battery.Cells", "fmt": {"bix": 800,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 51 voltage"},
+    {"id": "FORTWO_ED_CELL_V52", "path": "Battery.Cells", "fmt": {"bix": 816,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 52 voltage"},
+    {"id": "FORTWO_ED_CELL_V53", "path": "Battery.Cells", "fmt": {"bix": 832,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 53 voltage"},
+    {"id": "FORTWO_ED_CELL_V54", "path": "Battery.Cells", "fmt": {"bix": 848,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 54 voltage"},
+    {"id": "FORTWO_ED_CELL_V55", "path": "Battery.Cells", "fmt": {"bix": 864,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 55 voltage"},
+    {"id": "FORTWO_ED_CELL_V56", "path": "Battery.Cells", "fmt": {"bix": 880,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 56 voltage"},
+    {"id": "FORTWO_ED_CELL_V57", "path": "Battery.Cells", "fmt": {"bix": 896,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 57 voltage"},
+    {"id": "FORTWO_ED_CELL_V58", "path": "Battery.Cells", "fmt": {"bix": 912,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 58 voltage"},
+    {"id": "FORTWO_ED_CELL_V59", "path": "Battery.Cells", "fmt": {"bix": 928,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 59 voltage"},
+    {"id": "FORTWO_ED_CELL_V60", "path": "Battery.Cells", "fmt": {"bix": 944,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 60 voltage"},
+    {"id": "FORTWO_ED_CELL_V61", "path": "Battery.Cells", "fmt": {"bix": 960,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 61 voltage"},
+    {"id": "FORTWO_ED_CELL_V62", "path": "Battery.Cells", "fmt": {"bix": 976,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 62 voltage"},
+    {"id": "FORTWO_ED_CELL_V63", "path": "Battery.Cells", "fmt": {"bix": 992,  "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 63 voltage"},
+    {"id": "FORTWO_ED_CELL_V64", "path": "Battery.Cells", "fmt": {"bix": 1008, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 64 voltage"},
+    {"id": "FORTWO_ED_CELL_V65", "path": "Battery.Cells", "fmt": {"bix": 1024, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 65 voltage"},
+    {"id": "FORTWO_ED_CELL_V66", "path": "Battery.Cells", "fmt": {"bix": 1040, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 66 voltage"},
+    {"id": "FORTWO_ED_CELL_V67", "path": "Battery.Cells", "fmt": {"bix": 1056, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 67 voltage"},
+    {"id": "FORTWO_ED_CELL_V68", "path": "Battery.Cells", "fmt": {"bix": 1072, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 68 voltage"},
+    {"id": "FORTWO_ED_CELL_V69", "path": "Battery.Cells", "fmt": {"bix": 1088, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 69 voltage"},
+    {"id": "FORTWO_ED_CELL_V70", "path": "Battery.Cells", "fmt": {"bix": 1104, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 70 voltage"},
+    {"id": "FORTWO_ED_CELL_V71", "path": "Battery.Cells", "fmt": {"bix": 1120, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 71 voltage"},
+    {"id": "FORTWO_ED_CELL_V72", "path": "Battery.Cells", "fmt": {"bix": 1136, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 72 voltage"},
+    {"id": "FORTWO_ED_CELL_V73", "path": "Battery.Cells", "fmt": {"bix": 1152, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 73 voltage"},
+    {"id": "FORTWO_ED_CELL_V74", "path": "Battery.Cells", "fmt": {"bix": 1168, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 74 voltage"},
+    {"id": "FORTWO_ED_CELL_V75", "path": "Battery.Cells", "fmt": {"bix": 1184, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 75 voltage"},
+    {"id": "FORTWO_ED_CELL_V76", "path": "Battery.Cells", "fmt": {"bix": 1200, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 76 voltage"},
+    {"id": "FORTWO_ED_CELL_V77", "path": "Battery.Cells", "fmt": {"bix": 1216, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 77 voltage"},
+    {"id": "FORTWO_ED_CELL_V78", "path": "Battery.Cells", "fmt": {"bix": 1232, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 78 voltage"},
+    {"id": "FORTWO_ED_CELL_V79", "path": "Battery.Cells", "fmt": {"bix": 1248, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 79 voltage"},
+    {"id": "FORTWO_ED_CELL_V80", "path": "Battery.Cells", "fmt": {"bix": 1264, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 80 voltage"},
+    {"id": "FORTWO_ED_CELL_V81", "path": "Battery.Cells", "fmt": {"bix": 1280, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 81 voltage"},
+    {"id": "FORTWO_ED_CELL_V82", "path": "Battery.Cells", "fmt": {"bix": 1296, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 82 voltage"},
+    {"id": "FORTWO_ED_CELL_V83", "path": "Battery.Cells", "fmt": {"bix": 1312, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 83 voltage"},
+    {"id": "FORTWO_ED_CELL_V84", "path": "Battery.Cells", "fmt": {"bix": 1328, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 84 voltage"},
+    {"id": "FORTWO_ED_CELL_V85", "path": "Battery.Cells", "fmt": {"bix": 1344, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 85 voltage"},
+    {"id": "FORTWO_ED_CELL_V86", "path": "Battery.Cells", "fmt": {"bix": 1360, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 86 voltage"},
+    {"id": "FORTWO_ED_CELL_V87", "path": "Battery.Cells", "fmt": {"bix": 1376, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 87 voltage"},
+    {"id": "FORTWO_ED_CELL_V88", "path": "Battery.Cells", "fmt": {"bix": 1392, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 88 voltage"},
+    {"id": "FORTWO_ED_CELL_V89", "path": "Battery.Cells", "fmt": {"bix": 1408, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 89 voltage"},
+    {"id": "FORTWO_ED_CELL_V90", "path": "Battery.Cells", "fmt": {"bix": 1424, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 90 voltage"},
+    {"id": "FORTWO_ED_CELL_V91", "path": "Battery.Cells", "fmt": {"bix": 1440, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 91 voltage"},
+    {"id": "FORTWO_ED_CELL_V92", "path": "Battery.Cells", "fmt": {"bix": 1456, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 92 voltage"},
+    {"id": "FORTWO_ED_CELL_V93", "path": "Battery.Cells", "fmt": {"bix": 1472, "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Cell 93 voltage"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "0209"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_ISO",      "path": "Battery", "fmt": {           "len": 16, "max": 65534, "nullmax": 65534, "unit": "kiloohms" }, "name": "HV isolation resistance"},
+    {"id": "FORTWO_ED_DC_FAULT", "path": "Battery", "fmt": {"bix": 16, "len": 8,  "max": 255,                     "unit": "scalar"   }, "name": "HV DC fault code"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "030B"}, "freq": 600,
+  "signals": [
+    {"id": "FORTWO_ED_CONT_LEFT", "path": "Battery", "fmt": {"bix": 8, "len": 24, "max": 16777215, "unit": "scalar" }, "name": "HV contactor cycles remaining"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "030C"}, "freq": 600,
+  "signals": [
+    {"id": "FORTWO_ED_CONT_MAX", "path": "Battery", "fmt": {"bix": 8, "len": 24, "max": 16777215, "unit": "scalar" }, "name": "HV contactor cycles, maximum"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "0310"}, "freq": 60,
+  "signals": [
+    {"id": "FORTWO_ED_HV_OFF_TIME", "path": "Battery", "fmt": {"bix": 8,   "len": 24, "max": 16777215,              "unit": "seconds"     }, "name": "Time with HV off"},
+    {"id": "FORTWO_ED_SOH",         "path": "Battery", "fmt": {"bix": 80,  "len": 8,  "max": 255,                   "unit": "scalar"      }, "name": "State of health, raw"},
+    {"id": "FORTWO_ED_CAP_AS_MAX",  "path": "Battery", "fmt": {"bix": 104, "len": 16, "max": 18.2041,  "div": 3600, "unit": "ampereHours" }, "name": "Cell capacity, maximum"},
+    {"id": "FORTWO_ED_CAP_AS_MIN",  "path": "Battery", "fmt": {"bix": 136, "len": 16, "max": 18.2041,  "div": 3600, "unit": "ampereHours" }, "name": "Cell capacity, minimum"},
+    {"id": "FORTWO_ED_CAP_AS_AVG",  "path": "Battery", "fmt": {"bix": 152, "len": 16, "max": 18.2041,  "div": 3600, "unit": "ampereHours" }, "name": "Cell capacity, average"}
+  ]},
+{ "hdr": "7E7", "rax": "7EF", "fcm1": true, "dbg": true, "cmd": {"22": "D000"}, "freq": 10,
+  "signals": [
+    {"id": "FORTWO_ED_CONTACTOR", "path": "Battery", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "HV contactor state"}
+  ]}
 ]
 }
