@@ -1,21 +1,21 @@
 { "commands": [
 { "hdr": "61A", "rax": "483", "fcm1": true, "dbg": true, "cmd": {"22": "0223"}, "freq": 60,
   "signals": [
-    {"id": "FORTWO_ED_OBL_PLATE_T",  "path": "Battery", "fmt": {"bix": 8,  "len": 8, "max": 214, "min": -40, "add": -40, "nullmax": 254, "unit": "celsius" }, "name": "Charger cooling plate temperature"},
-    {"id": "FORTWO_ED_OBL_T",        "path": "Battery", "fmt": {"bix": 24, "len": 8, "max": 214, "min": -40, "add": -40, "nullmax": 254, "unit": "celsius" }, "name": "Charger temperature"},
-    {"id": "FORTWO_ED_OBL_SOCKET_T", "path": "Battery", "fmt": {"bix": 40, "len": 8, "max": 214, "min": -40, "add": -40, "nullmax": 254, "unit": "celsius" }, "name": "Charging socket temperature"}
+    {"id": "FORTWO_ED_OBL_PLATE_T",  "path": "Battery", "fmt": {"bix": 8,  "len": 8, "max": 215, "min": -40, "add": -40, "nullmax": 215, "unit": "celsius" }, "name": "Charger cooling plate temperature"},
+    {"id": "FORTWO_ED_OBL_T",        "path": "Battery", "fmt": {"bix": 24, "len": 8, "max": 215, "min": -40, "add": -40, "nullmax": 215, "unit": "celsius" }, "name": "Charger temperature"},
+    {"id": "FORTWO_ED_OBL_SOCKET_T", "path": "Battery", "fmt": {"bix": 40, "len": 8, "max": 215, "min": -40, "add": -40, "nullmax": 215, "unit": "celsius" }, "name": "Charging socket temperature"}
   ]},
 { "hdr": "61A", "rax": "483", "fcm1": true, "dbg": true, "cmd": {"22": "0225"}, "freq": 10,
   "signals": [
-    {"id": "FORTWO_ED_OBL_MAINS_A", "path": "Battery", "fmt": {"bix": 16,  "len": 16, "max": 204.6,  "div": 10, "nullmax": 2046, "unit": "amps" }, "name": "Charger mains current"},
-    {"id": "FORTWO_ED_OBL_CABLE_A", "path": "Battery", "fmt": {"bix": 32,  "len": 16, "max": 6553.5, "div": 10,                  "unit": "amps" }, "name": "Charging cable current code"},
-    {"id": "FORTWO_ED_OBL_HV_A",    "path": "Battery", "fmt": {"bix": 112, "len": 16, "max": 204.6,  "div": 10, "nullmax": 2046, "unit": "amps" }, "name": "Charger HV output current"}
+    {"id": "FORTWO_ED_OBL_MAINS_A", "path": "Battery", "fmt": {"bix": 16,  "len": 16, "max": 204.7,  "div": 10, "nullmax": 204.7, "unit": "amps" }, "name": "Charger mains current"},
+    {"id": "FORTWO_ED_OBL_CABLE_A", "path": "Battery", "fmt": {"bix": 32,  "len": 16, "max": 6553.5, "div": 10,                   "unit": "amps" }, "name": "Charging cable current code"},
+    {"id": "FORTWO_ED_OBL_HV_A",    "path": "Battery", "fmt": {"bix": 112, "len": 16, "max": 204.7,  "div": 10, "nullmax": 204.7, "unit": "amps" }, "name": "Charger HV output current"}
   ]},
 { "hdr": "61A", "rax": "483", "fcm1": true, "dbg": true, "cmd": {"22": "0226"}, "freq": 10,
   "signals": [
-    {"id": "FORTWO_ED_OBL_LV",      "path": "Battery", "fmt": {"bix": 16, "len": 8,  "max": 25.5,  "div": 10,                  "unit": "volts" }, "name": "Charger 12V output voltage"},
-    {"id": "FORTWO_ED_OBL_HV",      "path": "Battery", "fmt": {"bix": 40, "len": 16, "max": 818.9, "div": 10, "nullmax": 8189, "unit": "volts" }, "name": "Charger HV output voltage"},
-    {"id": "FORTWO_ED_OBL_MAINS_V", "path": "Battery", "fmt": {"bix": 56, "len": 16, "max": 818.9, "div": 10, "nullmax": 8189, "unit": "volts" }, "name": "Charger mains voltage"}
+    {"id": "FORTWO_ED_OBL_LV",      "path": "Battery", "fmt": {"bix": 16, "len": 8,  "max": 25.5, "div": 10,                 "unit": "volts" }, "name": "Charger 12V output voltage"},
+    {"id": "FORTWO_ED_OBL_HV",      "path": "Battery", "fmt": {"bix": 40, "len": 16, "max": 819,  "div": 10, "nullmax": 819, "unit": "volts" }, "name": "Charger HV output voltage"},
+    {"id": "FORTWO_ED_OBL_MAINS_V", "path": "Battery", "fmt": {"bix": 56, "len": 16, "max": 819,  "div": 10, "nullmax": 819, "unit": "volts" }, "name": "Charger mains voltage"}
   ]},
 { "hdr": "61A", "rax": "483", "fcm1": true, "dbg": true, "cmd": {"22": "022A"}, "freq": 60,
   "signals": [
@@ -137,11 +137,11 @@
   ]},
 { "hdr": "792", "rax": "793", "dbg": true, "cmd": {"22": "7303"}, "freq": 10,
   "signals": [
-    {"id": "FORTWO_OBL_V",  "path": "Battery", "fmt": {            "len": 16, "max": 5990.3,  "div": 10,   "nullmax": 59903, "unit": "volts"     }, "name": "Charger mains voltage"},
-    {"id": "FORTWO_OBL_A1", "path": "Battery", "fmt": {"bix": 48,  "len": 16, "max": 5990.3,  "div": 10,   "nullmax": 59903, "unit": "amps"      }, "name": "Charger mains current, phase 1"},
-    {"id": "FORTWO_OBL_A2", "path": "Battery", "fmt": {"bix": 64,  "len": 16, "max": 5990.3,  "div": 10,   "nullmax": 59903, "unit": "amps"      }, "name": "Charger mains current, phase 2"},
-    {"id": "FORTWO_OBL_P1", "path": "Battery", "fmt": {"bix": 96,  "len": 16, "max": 29.9515, "div": 2000, "nullmax": 59903, "unit": "kilowatts" }, "name": "Charger power 1"},
-    {"id": "FORTWO_OBL_P2", "path": "Battery", "fmt": {"bix": 112, "len": 16, "max": 29.9515, "div": 2000, "nullmax": 59903, "unit": "kilowatts" }, "name": "Charger power 2"}
+    {"id": "FORTWO_OBL_V",  "path": "Battery", "fmt": {            "len": 16, "max": 5990.4, "div": 10,   "nullmax": 5990.4, "unit": "volts"     }, "name": "Charger mains voltage"},
+    {"id": "FORTWO_OBL_A1", "path": "Battery", "fmt": {"bix": 48,  "len": 16, "max": 5990.4, "div": 10,   "nullmax": 5990.4, "unit": "amps"      }, "name": "Charger mains current, phase 1"},
+    {"id": "FORTWO_OBL_A2", "path": "Battery", "fmt": {"bix": 64,  "len": 16, "max": 5990.4, "div": 10,   "nullmax": 5990.4, "unit": "amps"      }, "name": "Charger mains current, phase 2"},
+    {"id": "FORTWO_OBL_P1", "path": "Battery", "fmt": {"bix": 96,  "len": 16, "max": 29.952, "div": 2000, "nullmax": 29.952, "unit": "kilowatts" }, "name": "Charger power 1"},
+    {"id": "FORTWO_OBL_P2", "path": "Battery", "fmt": {"bix": 112, "len": 16, "max": 29.952, "div": 2000, "nullmax": 29.952, "unit": "kilowatts" }, "name": "Charger power 2"}
   ]},
 { "hdr": "79B", "rax": "7BB", "fcm1": true, "dbg": true, "cmd": {"21": "02"}, "freq": 60,
   "signals": [
@@ -327,7 +327,7 @@
   ]},
 { "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "3495"}, "freq": 10,
   "signals": [
-    {"id": "FORTWO_DCDC_LOAD", "path": "Electrical", "fmt": { "len": 8, "max": 98.8281, "div": 2.56, "nullmax": 253, "unit": "percent" }, "name": "DC/DC load"}
+    {"id": "FORTWO_DCDC_LOAD", "path": "Electrical", "fmt": { "len": 8, "max": 99.21875, "div": 2.56, "nullmax": 99.21875, "unit": "percent" }, "name": "DC/DC load"}
   ]},
 { "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "34CB"}, "freq": 10,
   "signals": [
